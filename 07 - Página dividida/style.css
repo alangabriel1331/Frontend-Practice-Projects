@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+:root {
+  --izquierdo-bg-color: rgba(20, 83, 105, 0.7);
+  --derecho-bg-color: rgba(43, 43, 43, 0.8);
+  --izquierdo-btn-hover-color: rgb(30, 121, 155);
+  --derecho-btn-hover-color: rgb(100, 98, 98);
+  --hover-width: 75%;
+  --other-width: 25%;
+  --speed: 1000ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Caveat', cursive;
+  height: 150vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  top: 40%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  color: #fff;
+  border: #fff solid 0.2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 15rem;
+  padding: 1.5rem;
+}
+
+.lado.izquierdo .btn:hover {
+  background-color: var(--izquierdo-btn-hover-color);
+  border-color: var(--izquierdo-btn-hover-color);
+}
+
+.lado.derecho .btn:hover {
+  background-color: var(--derecho-btn-hover-color);
+  border-color: var(--derecho-btn-hover-color);
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #333;
+}
+
+.lado {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.lado.izquierdo {
+  left: 0;
+  background: url('https://cdn.cloudflare.steamstatic.com/store/home/store_home_share.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.lado.izquierdo::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--izquierdo-bg-color);
+}
+
+.lado.derecho {
+  right: 0;
+  background: url('https://i.blogs.es/e636e7/epic/1366_2000.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.lado.derecho::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--derecho-bg-color);
+}
+
+.lado.derecho,
+.lado.izquierdo,
+.lado.derecho::before,
+.lado.izquierdo::before {
+  transition: all var(--speed) ease-in-out;
+}
+
+.hover-izquierdo .izquierdo {
+  width: var(--hover-width);
+}
+
+.hover-izquierdo .derecho {
+  width: var(--other-width);
+}
+
+.hover-derecho .derecho {
+  width: var(--hover-width);
+}
+
+.hover-derecho .izquierdo {
+  width: var(--other-width);
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2rem;
+    top: 30%;
+  }
+
+  .btn {
+    padding: 1.2rem;
+    width: 12rem;
+  }
+}
